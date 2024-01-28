@@ -7,7 +7,7 @@ const AllocationForm = (props) => {
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
     const [action, setAction] = useState('');
-
+    const {currency }= useContext(AppContext);
     const submitEvent = () => {
 
             if(cost > remaining) {
@@ -38,7 +38,7 @@ const AllocationForm = (props) => {
             <div className='row'>
 
             <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
-                    <div className="input-group-prepend">
+                <div className="input-group-prepend">
                 <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
                   </div>
                   <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
@@ -56,9 +56,9 @@ const AllocationForm = (props) => {
                   </div>
                   <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
                         <option defaultValue value="Add" name="Add">Add</option>
-                <option value="Reduce" name="Reduce">Reduce</option>
+                        <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
-
+                    <span>{currency}</span>
                     <input
                         required='required'
                         type='number'
